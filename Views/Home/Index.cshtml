@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "ABC Retail – Storage Console";
+}
+
+<h1>ABC Retail – Storage Console</h1>
+<p>Use the nav to manage: <strong>Tables</strong>, <strong>Blobs</strong>, <strong>Files</strong>, <strong>Queues</strong>.</p>
+
+<div class="row g-3 mt-3">
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Customers</h5>
+                <p class="card-text">Manage customers in Azure Tables.</p>
+                <a class="btn btn-primary" asp-controller="Table" asp-action="Index">Open Customers</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Products</h5>
+                <p class="card-text">Manage products in Azure Tables.</p>
+                <a class="btn btn-primary" asp-controller="Product" asp-action="Index">Open Products</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Blobs</h5>
+                <p class="card-text">Upload and preview images.</p>
+                <!-- PLURAL CONTROLLER -->
+                <a class="btn btn-primary" asp-controller="Blobs" asp-action="Index">Open Blobs</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Queues</h5>
+                <p class="card-text">Send and peek retail events.</p>
+                <!-- FIXED: points to /Queues -->
+                <a class="btn btn-primary" asp-controller="Queues" asp-action="Index">Open Queues</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Files</h5>
+                <p class="card-text">Upload/download contracts (requires real Azure Storage).</p>
+                <!-- PLURAL CONTROLLER -->
+                <a class="btn btn-primary" asp-controller="Files" asp-action="Index">Open Files</a>
+            </div>
+        </div>
+    </div>
+</div>

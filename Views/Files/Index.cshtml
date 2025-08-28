@@ -1,0 +1,26 @@
+﻿@model IEnumerable<string>
+
+<h2>Azure File Share: Contracts</h2>
+<p><em>Note: Requires a real Azure Storage account (Azurite doesn't support Files).</em></p>
+
+@if (TempData["Message"] != null)
+{
+     <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Error"] != null)
+{
+     <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form method="post" enctype="multipart/form-data" asp-action="Upload">
+    @Html.AntiForgeryToken()
+    <input type="file" name="file" required />
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<ul>
+    @foreach (var f in Model)
+    {
+        <li><a asp-action="Download" asp-route-name="@f">@f</a></li>
+    }
+</ul>

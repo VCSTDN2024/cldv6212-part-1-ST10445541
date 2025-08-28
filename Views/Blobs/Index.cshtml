@@ -1,0 +1,19 @@
+﻿@model IEnumerable<(string Name, System.Uri Uri)>
+
+<h2>Blob Storage: Product Images</h2>
+
+<form method="post" enctype="multipart/form-data" asp-action="Upload">
+    <input type="file" name="file" accept="image/*,video/*" required />
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<ul>
+    @foreach (var (name, uri) in Model)
+    {
+        <li>
+            <a asp-action="Download" asp-route-name="@name">@name</a> |
+            <a href="@uri" target="_blank">View</a><br />
+            <img src="@uri" style="max-height:120px; max-width:200px;" />
+        </li>
+    }
+</ul>

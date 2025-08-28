@@ -1,0 +1,34 @@
+﻿@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Queues";
+}
+
+<h2>Queue: Retail Events</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form method="post" asp-action="Enqueue" class="row g-2 mb-3">
+    @Html.AntiForgeryToken()
+    <div class="col-md-3">
+        <input name="type" class="form-control" placeholder="Type (e.g. Order)" required />
+    </div>
+    <div class="col-md-3">
+        <input name="id" class="form-control" placeholder="Id (auto if blank)" />
+    </div>
+    <div class="col-md-4">
+        <input name="description" class="form-control" placeholder="Description" required />
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary w-100" type="submit">Enqueue</button>
+    </div>
+</form>
+
+<h4>Peek (latest)</h4>
+<pre>@string.Join("\n\n", Model)</pre>

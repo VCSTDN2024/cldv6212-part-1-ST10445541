@@ -1,0 +1,38 @@
+﻿@model AzureRetailApp.Models.ProductEntity
+@{
+    ViewData["Title"] = "Add Product";
+}
+<h2>Add Product</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Create" method="post" novalidate>
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <!-- bind to "price" string, not asp-for, so we control parsing -->
+        <input name="price" class="form-control" inputmode="decimal" placeholder="e.g. 1999.99" />
+        <small class="text-muted">Use dot as decimal separator (e.g., 1999.99).</small>
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
